@@ -36,6 +36,7 @@ min     15.0
 max     60.0
 mean    37.0
 sd      17.535679
+
 output 2 from MR2:
 
 25th percentile 17.5
