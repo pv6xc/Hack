@@ -15,7 +15,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 public class HackReducer extends
 Reducer<Text, FloatWritable, Text, FloatWritable> {
 
-	
+
 	long count;
 	long sum;
 	long sumSquare;
@@ -31,10 +31,10 @@ Reducer<Text, FloatWritable, Text, FloatWritable> {
 		Text tempText = new Text();
 		FloatWritable floatTemp = new FloatWritable();
 		if(key.toString().equals("count") || key.toString().equals("sum") || key.toString().equals("sumSquare")){
-		for(FloatWritable var:value){
-			temp += var.get();
-		}
-		floatTemp.set(temp);
+			for(FloatWritable var:value){
+				temp += var.get();
+			}
+			floatTemp.set(temp);
 		}
 		else if(key.toString().equals("min")){
 			for(FloatWritable var:value){
@@ -71,13 +71,8 @@ Reducer<Text, FloatWritable, Text, FloatWritable> {
 		float variance = (float) (sumSquare - (Math.pow(sum,2)/count));
 		float sd = (float) Math.sqrt(Math.abs(variance/(count-1)));
 		context.write(new Text("sd"),new FloatWritable(sd));
-		
-		
 		// counter
-		
 		context.getCounter(COUNTERS.count).increment(count);
-		
-		
-		
+
 	}
 }

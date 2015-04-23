@@ -22,7 +22,6 @@ public class PMapper extends
 		
 		Configuration conf = context.getConfiguration();
 		String value = conf.get("value");
-		System.out.println("inside mapper " + value);
 	}
 	
 	@Override
