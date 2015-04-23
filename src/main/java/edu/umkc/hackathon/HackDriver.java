@@ -35,8 +35,6 @@ public class HackDriver  {
 		FileOutputFormat.setOutputPath(job1, new Path("out1"));
 		job1.waitForCompletion(true);
 		Counters counters = job1.getCounters();
-		System.out.println("Total number of counters : "
-				+ counters.findCounter(COUNTERS.count).getValue());
 		Configuration conf = new Configuration();
 		conf.setLong("value", counters.findCounter(COUNTERS.count).getValue());
 		Job job2 = new Job(conf);
